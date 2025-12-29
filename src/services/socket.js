@@ -9,7 +9,7 @@ class SocketService {
     this.maxReconnectAttempts = 10;
   }
 
-  connect(url = 'http://localhost:5000') {
+  connect(url = 'https://hcfinvestbackend-production.up.railway.app') {
     if (this.socket && this.isConnected) {
       console.log('[Socket] Already connected');
       return this.socket;

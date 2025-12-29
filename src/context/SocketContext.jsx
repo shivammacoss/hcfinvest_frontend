@@ -20,7 +20,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     // Connect to socket server
-    socketService.connect('http://localhost:5001');
+    socketService.connect('https://hcfinvestbackend-production.up.railway.app');
 
     // Connection status listeners
     const unsubConnected = socketService.on('connected', () => {
