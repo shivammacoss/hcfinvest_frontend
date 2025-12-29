@@ -65,7 +65,7 @@ const Sidebar = ({ activeView, setActiveView }) => {
           onClick={() => setIsCollapsed(!isCollapsed)}
           className={`${isCollapsed ? 'w-10 h-10' : 'w-full h-10'} rounded-lg bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center gap-2 font-bold text-white text-sm transition-all hover:opacity-90`}
         >
-          <span>B4X</span>
+          <span>HCF</span>
           {!isCollapsed && (
             <ChevronLeft size={16} className="ml-auto" />
           )}
