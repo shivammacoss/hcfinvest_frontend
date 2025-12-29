@@ -51,22 +51,31 @@ const MobileApp = () => {
     }
   }
 
+  const showBottomNav = !['trade', 'ib', 'copy', 'support', 'profile'].includes(activeTab)
+
   return (
-    <div className="h-screen w-screen flex flex-col" style={{ backgroundColor: isDark ? '#000000' : '#f5f5f7' }}>
+    <div 
+      className="fixed inset-0 flex flex-col" 
+      style={{ backgroundColor: isDark ? '#000000' : '#f5f5f7' }}
+    >
       {/* Main Content */}
-      <div className="flex-1 overflow-hidden">
+      <div 
+        className="flex-1 overflow-hidden"
+        style={{ paddingBottom: showBottomNav ? '60px' : '0' }}
+      >
         {renderContent()}
       </div>
 
       {/* Bottom Navigation - Hidden when in Trade view or More pages */}
-      {!['trade', 'ib', 'copy', 'support', 'profile'].includes(activeTab) && (
+      {showBottomNav && (
         <nav 
-          className="flex items-center justify-around"
+          className="fixed bottom-0 left-0 right-0 flex items-center justify-around z-50"
           style={{ 
             backgroundColor: isDark ? '#1c1c1e' : '#ffffff',
             borderTop: `1px solid ${isDark ? '#2c2c2e' : '#e5e5ea'}`,
             paddingTop: '8px',
-            paddingBottom: 'max(8px, env(safe-area-inset-bottom))'
+            paddingBottom: 'max(12px, env(safe-area-inset-bottom))',
+            minHeight: '60px'
           }}
         >
           {tabs.map((tab) => (
@@ -79,14 +88,14 @@ const MobileApp = () => {
                   setActiveTab(tab.id)
                 }
               }}
-              className="flex flex-col items-center flex-1 py-1"
+              className="flex flex-col items-center flex-1 py-2"
             >
               <tab.icon 
-                size={20} 
+                size={22} 
                 color={activeTab === tab.id ? '#3b82f6' : (isDark ? '#8e8e93' : '#6b6b6b')}
               />
               <span 
-                className="text-[10px] mt-0.5"
+                className="text-[11px] mt-1 font-medium"
                 style={{ color: activeTab === tab.id ? '#3b82f6' : (isDark ? '#8e8e93' : '#6b6b6b') }}
               >
                 {tab.label}
